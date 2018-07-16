@@ -1,0 +1,8 @@
+<div *ngIf="character">
+  <ul>id: {{character.id}}</ul>
+  <ul>name: {{character.name}}</ul>
+  <ul>status: {{character.status}}</ul>
+  <ul>gender: {{character.gender}}</ul>
+  <ul>origin-name: {{character.origin.name}}</ul>
+  <img [src]=character.image>
+</div>
