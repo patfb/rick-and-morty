@@ -1,21 +1,9 @@
-<h2>Single Character</h2>
-<div *ngIf="character">
-  <img [src]=character.image>
-  <ul>id: {{character.id}}</ul>
-  <ul>name: {{character.name}}</ul>
-  <ul>status: {{character.status}}</ul>
-  <ul>gender: {{character.gender}}</ul>
-  <ul>origin-name: {{character.origin.name}}</ul>
-</div>
-
-<h2>Multiple Characters</h2>
-<div *ngIf="characters">
-  <div *ngFor="let character of characters">
+<div class="flex-container" *ngIf="characters">
+  <div class="flex-item" *ngFor="let character of characters">
     <img [src]=character.image>
     <ul>id: {{character.id}}</ul>
     <ul>name: {{character.name}}</ul>
     <ul>status: {{character.status}}</ul>
     <ul>gender: {{character.gender}}</ul>
-    <ul>origin-name: {{character.origin.name}}</ul>
   </div>
 </div>

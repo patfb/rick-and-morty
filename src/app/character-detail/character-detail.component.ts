@@ -25,7 +25,7 @@ export class CharacterDetailComponent implements OnInit {
   }
 
   getCharacters(): void {
-    const charsToGet: number[] = [1, 2, 3];
+    const charsToGet: number[] = [1, 2, 3, 4, 5];
     this.infoService
       .getCharacters(charsToGet)
       .subscribe(characters => (this.characters = characters));
