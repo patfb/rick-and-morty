@@ -6,9 +6,10 @@ import { CharacterDetailComponent } from "./character-detail/character-detail.co
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './/app-routing.module';
 import { SearchComponent } from './search/search.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
-  declarations: [AppComponent, CharacterDetailComponent, SearchComponent],
+  declarations: [AppComponent, CharacterDetailComponent, SearchComponent, NavigationComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
