@@ -1,0 +1,10 @@
+<button (click)="search()">Fake Search</button>
+<div *ngIf="searchResult">
+    <div *ngFor="let result of searchResult['results']">
+        <img [src]=result.image>
+        <ul>id: {{result.id}}</ul>
+        <ul>name: {{result.name}}</ul>
+        <ul>status: {{result.status}}</ul>
+        <ul>gender: {{result.gender}}</ul>
+    </div>
+</div>

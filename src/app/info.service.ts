@@ -1,8 +1,11 @@
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
 import { Character } from "./character";
-import { catchError, map, tap } from "rxjs/operators";
+import { SearchResult } from "./search-results";
+
+const characterUrl = "https://rickandmortyapi.com/api/character";
+const placeholderUrl = "https://jsonplaceholder.typicode.com";
 
 @Injectable({
   providedIn: "root"
@@ -10,15 +13,20 @@ import { catchError, map, tap } from "rxjs/operators";
 export class InfoService {
   constructor(private http: HttpClient) {}
 
-  private characterUrl = "https://rickandmortyapi.com/api/character";
-
   getCharacter(id: number): Observable<Character> {
-    const url = `${this.characterUrl}/${id}`;
+    const url = `${characterUrl}/${id}`;
     return this.http.get<Character>(url);
   }
 
   getCharacters(charactersToGet: number[]): Observable<Character[]> {
-    const url = `${this.characterUrl}/${charactersToGet}`;
+    const url = `${characterUrl}/${charactersToGet}`;
     return this.http.get<Character[]>(url);
+  }
+
+  search(): Observable<SearchResult> {
+    let params = new HttpParams().set("name", "rick");
+    return this.http.get<SearchResult>(characterUrl, {
+      params
+    });
   }
 }
