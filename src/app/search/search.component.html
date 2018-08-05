@@ -3,12 +3,18 @@
     <button (click)="search(searchBox.value)">Search</button>
 </div>
 
-<div *ngIf="searchResult"> Results for {{name}}
+<!-- add a refine your search form with a drop down menu that is populated with locations / alive/dead status / gender-->
+
+
+<div *ngIf="searchResult"> Results for: {{name}}
     <div *ngFor="let result of searchResult['results']">
         <img [src]=result.image>
         <ul>id: {{result.id}}</ul>
         <ul>name: {{result.name}}</ul>
         <ul>status: {{result.status}}</ul>
+        <ul>gender: {{result.gender}}</ul>
+        <ul>origin: {{result.origin.name}}
+        </ul>
         <ul>gender: {{result.gender}}</ul>
     </div>
 </div>
