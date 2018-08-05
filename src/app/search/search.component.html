@@ -1,4 +1,10 @@
-<button (click)="search()">Fake Search</button>
+<h1>{{name}}</h1>
+<div>
+    <input [(ngModel)]="name" placeholder="Name to search">
+    <button type="submit">Search</button>
+</div>
+
+<button (click)="search()"> Fake Search</button>
 <div *ngIf="searchResult">
     <div *ngFor="let result of searchResult['results']">
         <img [src]=result.image>

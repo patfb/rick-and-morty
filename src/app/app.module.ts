@@ -4,13 +4,19 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { CharacterDetailComponent } from "./character-detail/character-detail.component";
 import { HttpClientModule } from "@angular/common/http";
-import { AppRoutingModule } from './/app-routing.module';
-import { SearchComponent } from './search/search.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { AppRoutingModule } from ".//app-routing.module";
+import { SearchComponent } from "./search/search.component";
+import { NavigationComponent } from "./navigation/navigation.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
-  declarations: [AppComponent, CharacterDetailComponent, SearchComponent, NavigationComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    CharacterDetailComponent,
+    SearchComponent,
+    NavigationComponent
+  ],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
