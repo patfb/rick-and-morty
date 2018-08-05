@@ -13,15 +13,16 @@ export class SearchComponent implements OnInit {
 
   api = "https://rickandmortyapi.com/api";
   searchResult: SearchResult;
-  params = new HttpParams().set("name", "rick");
 
   constructor(private infoService: InfoService) {}
 
   ngOnInit() {}
 
-  search(): void {
+  search(inputName: string): void {
+    this.name = inputName;
+    let params = new HttpParams().set("name", inputName);
     this.infoService
-      .search(this.params)
+      .search(params)
       .subscribe(searchResult => (this.searchResult = searchResult));
   }
 }
