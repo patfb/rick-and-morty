@@ -1,9 +1,19 @@
 <div>
-    <input #searchBox placeholder="Name to search" (keyup.enter)="search(searchBox.value)">
-    <button (click)="search(searchBox.value)">Search</button>
+    <input placeholder="Name to search" [(ngModel)]="name" (keyup.enter)="search()">
+    <button (click)="search()">Search</button>
 </div>
 
-<!-- add a refine your search form with a drop down menu that is populated with locations / alive/dead status / gender-->
+
+<label>Status:
+    <select name="statusSelector" [(ngModel)]="status">
+        <option value="any">Any</option>
+        <option value="alive">Alive</option>
+        <option value="dead">Dead</option>
+        <option value="unknown">Unknown</option>
+    </select>
+</label>
+
+<h1>Selected status {{status}}</h1>
 
 
 <div *ngIf="searchResult"> Results for: {{name}}

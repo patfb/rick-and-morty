@@ -23,9 +23,7 @@ export class InfoService {
     return this.http.get<Character[]>(url);
   }
 
-  search(params: HttpParams): Observable<SearchResult> {
-    return this.http.get<SearchResult>(characterUrl, {
-      params
-    });
+  search(params: string): Observable<SearchResult> {
+    return this.http.get<SearchResult>(characterUrl + params);
   }
 }

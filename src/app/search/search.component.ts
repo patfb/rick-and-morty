@@ -1,5 +1,5 @@
 import { HttpParams } from "@angular/common/http";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { InfoService } from "../info.service";
 import { SearchResult } from "../search-results";
 
@@ -9,7 +9,8 @@ import { SearchResult } from "../search-results";
   styleUrls: ["./search.component.css"]
 })
 export class SearchComponent implements OnInit {
-  @Input() name: string;
+  name: string;
+  status: string;
 
   api = "https://rickandmortyapi.com/api";
   searchResult: SearchResult;
@@ -18,11 +19,27 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {}
 
-  search(inputName: string): void {
-    this.name = inputName;
-    let params = new HttpParams().set("name", inputName);
+  search(): void {
+    console.log("name: " + this.name);
+    console.log("status: " + this.status);
+
     this.infoService
-      .search(params)
+      .search(this.buildParams())
       .subscribe(searchResult => (this.searchResult = searchResult));
+  }
+
+  buildParams(): string {
+    //HttpParams is immutable so calling .set() on it returns a new instance instead of appending
+    let queryParams: string = "?";
+
+    if (this.name) {
+      queryParams += "name=" + this.name;
+    }
+
+    if (this.status && this.status.toLowerCase() !== "any") {
+      queryParams += "&status=" + this.status;
+    }
+
+    return queryParams;
   }
 }
