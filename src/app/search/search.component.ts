@@ -1,7 +1,8 @@
-import { HttpParams } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { InfoService } from "../info.service";
+import { QueryParamService } from "../queryparam.service";
 import { SearchResult } from "../search-results";
+import { SearchParamater } from "../search-paramater";
 
 @Component({
   selector: "app-search",
@@ -11,35 +12,47 @@ import { SearchResult } from "../search-results";
 export class SearchComponent implements OnInit {
   name: string;
   status: string;
-
-  api = "https://rickandmortyapi.com/api";
   searchResult: SearchResult;
+  api: string = "https://rickandmortyapi.com/api";
 
-  constructor(private infoService: InfoService) {}
+  constructor(
+    private infoService: InfoService,
+    private queryParamGeneratorService: QueryParamService
+  ) {}
 
   ngOnInit() {}
 
   search(): void {
-    console.log("name: " + this.name);
-    console.log("status: " + this.status);
-
-    this.infoService
-      .search(this.buildParams())
-      .subscribe(searchResult => (this.searchResult = searchResult));
-  }
-
-  buildParams(): string {
-    //HttpParams is immutable so calling .set() on it returns a new instance instead of appending
-    let queryParams: string = "?";
+    console.log("name:" + this.name);
+    console.log("status:" + this.status);
+    let nameParam = new SearchParamater();
+    let statusParam = new SearchParamater();
+    let paramArray: any[] = [];
 
     if (this.name) {
-      queryParams += "name=" + this.name;
+      nameParam.key = "name";
+      nameParam.value = this.name;
+      console.log("nameParam:" + JSON.stringify(nameParam));
+      paramArray.push(nameParam);
     }
 
-    if (this.status && this.status.toLowerCase() !== "any") {
-      queryParams += "&status=" + this.status;
+    if (this.status) {
+      statusParam.key = "status";
+      statusParam.value = this.status;
+      console.log("statusParam:" + JSON.stringify(statusParam));
+      paramArray.push(statusParam);
     }
 
-    return queryParams;
+    console.log("paramArray: " + JSON.stringify(paramArray));
+
+    let queryString: string = this.queryParamGeneratorService.generateSearchString(
+      paramArray
+    );
+
+    console.log("queryString:" + queryString);
+
+    this.infoService
+      .search(queryString)
+      .subscribe(searchResult => (this.searchResult = searchResult));
   }
 }
