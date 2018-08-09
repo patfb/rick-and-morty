@@ -4,16 +4,29 @@
 </div>
 
 
-<label>Status:
-    <select name="statusSelector" [(ngModel)]="status">
-        <option value="any">Any</option>
-        <option value="alive">Alive</option>
-        <option value="dead">Dead</option>
-        <option value="unknown">Unknown</option>
-    </select>
-</label>
+<div>
+    <label>Status:
+        <select [(ngModel)]="status">
+            <option value="any">Any</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+        </select>
+    </label>
 
-<h1>Selected status {{status}}</h1>
+    <label>Gender:
+        <select [(ngModel)]="gender">
+            <option value="any">Any</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="genderless ">Genderless</option>
+            <option value="unknown">Unknown</option>
+        </select>
+    </label>
+</div>
+
+<p>Selected status: {{status | titlecase}}</p>
+<p>Selected gender: {{gender | titlecase}}</p>
 
 
 <div *ngIf="searchResult"> Results for: {{name}}

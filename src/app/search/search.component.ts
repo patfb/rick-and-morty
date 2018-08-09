@@ -11,7 +11,8 @@ import { SearchParamater } from "../search-paramater";
 })
 export class SearchComponent implements OnInit {
   name: string;
-  status: string;
+  status: string = "any";
+  gender: string = "any";
   searchResult: SearchResult;
   api: string = "https://rickandmortyapi.com/api";
 
@@ -27,6 +28,7 @@ export class SearchComponent implements OnInit {
     console.log("status:" + this.status);
     let nameParam = new SearchParamater();
     let statusParam = new SearchParamater();
+    let genderParam = new SearchParamater();
     let paramArray: any[] = [];
 
     if (this.name) {
@@ -36,11 +38,18 @@ export class SearchComponent implements OnInit {
       paramArray.push(nameParam);
     }
 
-    if (this.status) {
+    if (this.status && "any" != this.status.toLowerCase()) {
       statusParam.key = "status";
       statusParam.value = this.status;
       console.log("statusParam:" + JSON.stringify(statusParam));
       paramArray.push(statusParam);
+    }
+
+    if (this.gender && "any" != this.gender.toLowerCase()) {
+      genderParam.key = "gender";
+      genderParam.value = this.gender;
+      console.log("genderParam:" + JSON.stringify(genderParam));
+      paramArray.push(genderParam);
     }
 
     console.log("paramArray: " + JSON.stringify(paramArray));
