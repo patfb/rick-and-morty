@@ -24,4 +24,8 @@ export class InfoService {
   search(params: string): Observable<SearchResult> {
     return this.http.get<SearchResult>(characterUrl + params);
   }
+
+  getDifferentPage(fullPageUrl: string): Observable<SearchResult> {
+    return this.http.get<SearchResult>(fullPageUrl);
+  }
 }

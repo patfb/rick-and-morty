@@ -1,3 +1,7 @@
+<button (click)="getCharacters()">Home</button>
+<button (click)="prevPage()">Previous Page</button>
+<button (click)="nextPage()">Next Page</button>
+
 <div class="flex-container" *ngIf="searchResult">
   <div class="flex-item" *ngFor="let result of searchResult['results']">
     <img [src]=result.image>

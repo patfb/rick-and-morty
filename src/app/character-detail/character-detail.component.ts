@@ -18,9 +18,19 @@ export class CharacterDetailComponent implements OnInit {
 
   getCharacters(): void {
     this.infoService
-      .getCharacters("page=2")
+      .getCharacters()
       .subscribe(searchResult => (this.searchResult = searchResult));
   }
 
-  nextPage(): void {}
+  nextPage(): void {
+    this.infoService
+      .getDifferentPage(this.searchResult.info.next)
+      .subscribe(newSearchResult => (this.searchResult = newSearchResult));
+  }
+
+  prevPage(): void {
+    this.infoService
+      .getDifferentPage(this.searchResult.info.prev)
+      .subscribe(newSearchResult => (this.searchResult = newSearchResult));
+  }
 }
