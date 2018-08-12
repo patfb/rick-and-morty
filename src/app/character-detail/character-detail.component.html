@@ -5,7 +5,8 @@
   <p>Current Page: {{searchResult.info.next | currentPage}} </p>
   <p>Total Pages: {{searchResult.info.pages}}</p>
   <label>Jump to page: </label>
-  <input placeholder="page" [(ngModel)]="selectedPage" (keyup.enter)="getCharacters(selectedPage)" maxlength="2" size="2">
+  <input name="pageSelector" placeholder="page" [(ngModel)]="selectedPage" (keyup.enter)="getCharacters(selectedPage)" type="number"
+    min="1" max="{{searchResult.info.pages}}">
   <button (click)="getCharacters(selectedPage)">Go</button>
 </div>
 
