@@ -5,7 +5,11 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class CurrentPagePipe implements PipeTransform {
   transform(value: string): number {
-    const nextPage: number = +value.slice(value.length - 1, value.length);
+    // https://rickandmortyapi.com/api/character/?page=2
+    const nextPage: number = +value.slice(
+      value.lastIndexOf("=") + 1,
+      value.length
+    );
     return nextPage - 1;
   }
 }

@@ -9,6 +9,7 @@ import { InfoService } from "../services/info.service";
 })
 export class CharacterDetailComponent implements OnInit {
   searchResult: SearchResult;
+  selectedPage: number;
 
   constructor(private infoService: InfoService) {}
 
@@ -36,9 +37,9 @@ export class CharacterDetailComponent implements OnInit {
     }
   }
 
-  getCharacters(): void {
+  getCharacters(page?: number): void {
     this.infoService
-      .getCharacters()
+      .getCharacters(page)
       .subscribe(searchResult => (this.searchResult = searchResult));
   }
 

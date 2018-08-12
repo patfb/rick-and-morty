@@ -4,6 +4,9 @@
 <div *ngIf="searchResult">
   <p>Current Page: {{searchResult.info.next | currentPage}} </p>
   <p>Total Pages: {{searchResult.info.pages}}</p>
+  <label>Jump to page: </label>
+  <input placeholder="page" [(ngModel)]="selectedPage" (keyup.enter)="getCharacters(selectedPage)" maxlength="2" size="2">
+  <button (click)="getCharacters(selectedPage)">Go</button>
 </div>
 
 

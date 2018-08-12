@@ -11,9 +11,9 @@ const characterUrl = "https://rickandmortyapi.com/api/character";
 export class InfoService {
   constructor(private http: HttpClient) {}
 
-  getCharacters(page?: string): Observable<SearchResult> {
+  getCharacters(page?: number): Observable<SearchResult> {
     if (page) {
-      return this.http.get<SearchResult>(characterUrl + `?${page}`);
+      return this.http.get<SearchResult>(characterUrl + `?page=${page}`);
     } else {
       return this.http.get<SearchResult>(characterUrl);
     }
