@@ -8,7 +8,7 @@ import { InfoService } from "../services/info.service";
   styleUrls: ["./character-detail.component.css"]
 })
 export class CharacterDetailComponent implements OnInit {
-  searchResult: SearchResult;
+  private searchResult: SearchResult;
 
   constructor(private infoService: InfoService) {}
 
@@ -18,7 +18,9 @@ export class CharacterDetailComponent implements OnInit {
 
   getCharacters(): void {
     this.infoService
-      .getCharacters()
+      .getCharacters("page=2")
       .subscribe(searchResult => (this.searchResult = searchResult));
   }
+
+  nextPage(): void {}
 }

@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Character } from "../interfaces/character";
 import { SearchResult } from "../interfaces/search-results";
 
 const characterUrl = "https://rickandmortyapi.com/api";
@@ -12,8 +11,14 @@ const characterUrl = "https://rickandmortyapi.com/api";
 export class InfoService {
   constructor(private http: HttpClient) {}
 
-  getCharacters(): Observable<SearchResult> {
-    return this.http.get<SearchResult>(characterUrl + "/character");
+  getCharacters(page?: string): Observable<SearchResult> {
+    if (page) {
+      return this.http.get<SearchResult>(
+        characterUrl + "/character" + `?${page}`
+      );
+    } else {
+      return this.http.get<SearchResult>(characterUrl + "/character");
+    }
   }
 
   search(params: string): Observable<SearchResult> {
