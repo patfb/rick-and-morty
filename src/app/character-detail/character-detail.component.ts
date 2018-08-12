@@ -8,7 +8,7 @@ import { InfoService } from "../services/info.service";
   styleUrls: ["./character-detail.component.css"]
 })
 export class CharacterDetailComponent implements OnInit {
-  private searchResult: SearchResult;
+  searchResult: SearchResult;
 
   constructor(private infoService: InfoService) {}
 
