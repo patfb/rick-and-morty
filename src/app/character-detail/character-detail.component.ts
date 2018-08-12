@@ -16,6 +16,18 @@ export class CharacterDetailComponent implements OnInit {
     this.getCharacters();
   }
 
+  hasPrevious(): boolean {
+    if (this.searchResult) {
+      if (this.searchResult.info) {
+        if (this.searchResult.info.prev !== "") {
+          return true;
+        }
+      }
+    } else {
+      return false;
+    }
+  }
+
   getCharacters(): void {
     this.infoService
       .getCharacters()

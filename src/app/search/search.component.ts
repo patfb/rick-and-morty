@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   status = "any";
   gender = "any";
   searchResult: SearchResult;
-  hasPrevious: boolean = true;
 
   constructor(
     private infoService: InfoService,
