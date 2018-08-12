@@ -1,5 +1,5 @@
 <button (click)="getCharacters()">Home</button>
-<button (click)="prevPage()">Previous Page</button>
+<button *ngIf="hasPrevious" (click)="prevPage()">Previous Page</button>
 <button (click)="nextPage()">Next Page</button>
 
 <div class="flex-container" *ngIf="searchResult">
