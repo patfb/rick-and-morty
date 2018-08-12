@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { InfoService } from "../info.service";
-import { QueryParamService } from "../queryparam.service";
-import { SearchResult } from "../search-results";
-import { SearchParamater } from "../search-paramater";
+import { InfoService } from "../services/info.service";
+import { QueryParamService } from "../services/queryparam.service";
+import { SearchResult } from "../interfaces/search-results";
+import { SearchParamater } from "../interfaces/search-paramater";
 
 @Component({
   selector: "app-search",

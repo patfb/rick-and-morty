@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { SearchParamater } from "./search-paramater";
+import { SearchParamater } from "../interfaces/search-paramater";
 
 @Injectable({
   providedIn: "root"

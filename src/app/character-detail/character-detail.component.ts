@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { InfoService } from "../info.service";
-import { Character } from "../character";
+import { SearchResult } from "../interfaces/search-results";
+import { InfoService } from "../services/info.service";
 
 @Component({
   selector: "app-character-detail",
@@ -8,26 +8,17 @@ import { Character } from "../character";
   styleUrls: ["./character-detail.component.css"]
 })
 export class CharacterDetailComponent implements OnInit {
-  character: Character;
-  characters: Character[];
+  searchResult: SearchResult;
 
   constructor(private infoService: InfoService) {}
 
   ngOnInit() {
-    this.getCharacter(1);
     this.getCharacters();
   }
 
-  getCharacter(id: number): void {
-    this.infoService
-      .getCharacter(id)
-      .subscribe(character => (this.character = character));
-  }
-
   getCharacters(): void {
-    const charsToGet: number[] = [1, 2, 3, 4, 5];
     this.infoService
-      .getCharacters(charsToGet)
-      .subscribe(characters => (this.characters = characters));
+      .getCharacters()
+      .subscribe(searchResult => (this.searchResult = searchResult));
   }
 }
