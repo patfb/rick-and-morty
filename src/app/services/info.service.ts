@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SearchResult } from "../interfaces/search-results";
 
-const characterUrl = "https://rickandmortyapi.com/api";
+const characterUrl = "https://rickandmortyapi.com/api/character";
 
 @Injectable({
   providedIn: "root"
@@ -13,11 +13,9 @@ export class InfoService {
 
   getCharacters(page?: string): Observable<SearchResult> {
     if (page) {
-      return this.http.get<SearchResult>(
-        characterUrl + "/character" + `?${page}`
-      );
+      return this.http.get<SearchResult>(characterUrl + `?${page}`);
     } else {
-      return this.http.get<SearchResult>(characterUrl + "/character");
+      return this.http.get<SearchResult>(characterUrl);
     }
   }
 

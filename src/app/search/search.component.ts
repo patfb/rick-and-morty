@@ -11,10 +11,9 @@ import { SearchParamater } from "../interfaces/search-paramater";
 })
 export class SearchComponent implements OnInit {
   name: string;
-  status: string = "any";
-  gender: string = "any";
+  status = "any";
+  gender = "any";
   searchResult: SearchResult;
-  api: string = "https://rickandmortyapi.com/api";
 
   constructor(
     private infoService: InfoService,
@@ -26,10 +25,10 @@ export class SearchComponent implements OnInit {
   search(): void {
     console.log("name:" + this.name);
     console.log("status:" + this.status);
-    let nameParam = new SearchParamater();
-    let statusParam = new SearchParamater();
-    let genderParam = new SearchParamater();
-    let paramArray: any[] = [];
+    const nameParam = new SearchParamater();
+    const statusParam = new SearchParamater();
+    const genderParam = new SearchParamater();
+    const paramArray: any[] = [];
 
     if (this.name) {
       nameParam.key = "name";
@@ -38,14 +37,14 @@ export class SearchComponent implements OnInit {
       paramArray.push(nameParam);
     }
 
-    if (this.status && "any" != this.status.toLowerCase()) {
+    if (this.status && "any" !== this.status.toLowerCase()) {
       statusParam.key = "status";
       statusParam.value = this.status;
       console.log("statusParam:" + JSON.stringify(statusParam));
       paramArray.push(statusParam);
     }
 
-    if (this.gender && "any" != this.gender.toLowerCase()) {
+    if (this.gender && "any" !== this.gender.toLowerCase()) {
       genderParam.key = "gender";
       genderParam.value = this.gender;
       console.log("genderParam:" + JSON.stringify(genderParam));
@@ -54,7 +53,7 @@ export class SearchComponent implements OnInit {
 
     console.log("paramArray: " + JSON.stringify(paramArray));
 
-    let queryString: string = this.queryParamGeneratorService.generateSearchString(
+    const queryString: string = this.queryParamGeneratorService.generateSearchString(
       paramArray
     );
 
