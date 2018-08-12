@@ -7,13 +7,15 @@ import { AppComponent } from "./app.component";
 import { CharacterDetailComponent } from "./character-detail/character-detail.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { SearchComponent } from "./search/search.component";
+import { CurrentPagePipe } from "./pipes/current-page.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterDetailComponent,
     SearchComponent,
-    NavigationComponent
+    NavigationComponent,
+    CurrentPagePipe
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

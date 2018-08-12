@@ -3,7 +3,6 @@
     <button (click)="search()">Search</button>
 </div>
 
-
 <div>
     <label>Status:
         <select [(ngModel)]="status">
@@ -27,6 +26,7 @@
 
 <p>Selected status: {{status | titlecase}}</p>
 <p>Selected gender: {{gender | titlecase}}</p>
+<p *ngIf="searchResult">Total Pages: {{searchResult.info.pages}}</p>
 
 
 <div *ngIf="searchResult"> Results for: {{name}}

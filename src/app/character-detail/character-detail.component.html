@@ -1,6 +1,12 @@
 <button (click)="getCharacters()">Home</button>
 <button (click)="nextPage()">Next Page</button>
 <button *ngIf="hasPrevious()" (click)="prevPage()">Previous Page</button>
+<div *ngIf="searchResult">
+  <p>Current Page: {{searchResult.info.next | currentPage}} </p>
+  <p>Total Pages: {{searchResult.info.pages}}</p>
+</div>
+
+
 
 <div class="flex-container" *ngIf="searchResult">
   <div class="flex-item" *ngFor="let result of searchResult['results']">

@@ -28,6 +28,14 @@ export class CharacterDetailComponent implements OnInit {
     }
   }
 
+  getPages(): number {
+    if (this.searchResult) {
+      if (this.searchResult.info) {
+        return this.searchResult.info.pages;
+      }
+    }
+  }
+
   getCharacters(): void {
     this.infoService
       .getCharacters()
