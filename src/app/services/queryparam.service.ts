@@ -8,7 +8,7 @@ export class QueryParamService {
   constructor() {}
 
   generateSearchString(input: SearchParamater[]): string {
-    let queryString: string = "";
+    let queryString = "";
 
     if (input.length > 0) {
       queryString += "?";
@@ -18,8 +18,7 @@ export class QueryParamService {
       queryString += param.key + "=" + param.value + "&";
     });
 
-    let slicedQueryString = queryString.slice(0, -1);
-    console.log("slicedQueryString:" + slicedQueryString);
+    const slicedQueryString = queryString.slice(0, -1);
 
     return slicedQueryString;
   }

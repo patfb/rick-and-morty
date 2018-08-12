@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { SearchParamater } from "../interfaces/search-paramater";
+import { SearchResult } from "../interfaces/search-results";
 import { InfoService } from "../services/info.service";
 import { QueryParamService } from "../services/queryparam.service";
-import { SearchResult } from "../interfaces/search-results";
-import { SearchParamater } from "../interfaces/search-paramater";
 
 @Component({
   selector: "app-search",
@@ -22,42 +22,31 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {}
 
+  isEqualToAny(input: string) {
+    return "any" !== input.toLowerCase();
+  }
+
   search(): void {
-    console.log("name:" + this.name);
-    console.log("status:" + this.status);
-    const nameParam = new SearchParamater();
-    const statusParam = new SearchParamater();
-    const genderParam = new SearchParamater();
     const paramArray: any[] = [];
 
     if (this.name) {
-      nameParam.key = "name";
-      nameParam.value = this.name;
-      console.log("nameParam:" + JSON.stringify(nameParam));
+      const nameParam: SearchParamater = new SearchParamater("name", this.name);
       paramArray.push(nameParam);
     }
 
-    if (this.status && "any" !== this.status.toLowerCase()) {
-      statusParam.key = "status";
-      statusParam.value = this.status;
-      console.log("statusParam:" + JSON.stringify(statusParam));
+    if (this.status && this.isEqualToAny(this.status)) {
+      const statusParam = new SearchParamater("status", this.status);
       paramArray.push(statusParam);
     }
 
-    if (this.gender && "any" !== this.gender.toLowerCase()) {
-      genderParam.key = "gender";
-      genderParam.value = this.gender;
-      console.log("genderParam:" + JSON.stringify(genderParam));
+    if (this.gender && this.isEqualToAny(this.gender)) {
+      const genderParam = new SearchParamater("gender", this.gender);
       paramArray.push(genderParam);
     }
-
-    console.log("paramArray: " + JSON.stringify(paramArray));
 
     const queryString: string = this.queryParamGeneratorService.generateSearchString(
       paramArray
     );
-
-    console.log("queryString:" + queryString);
 
     this.infoService
       .search(queryString)
