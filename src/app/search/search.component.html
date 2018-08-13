@@ -26,17 +26,13 @@
 
 <p>Selected status: {{status | titlecase}}</p>
 <p>Selected gender: {{gender | titlecase}}</p>
-<p *ngIf="searchResult">Total Pages: {{searchResult.info.pages}}</p>
+<div *ngIf="searchResult">
+    <p>Total Pages: {{searchResult.info.pages}}</p>
+    <p>Results for: {{name}}</p>
+</div>
 
 
-<div *ngIf="searchResult"> Results for: {{name}}
-    <div *ngFor="let result of searchResult['results']">
-        <img [src]=result.image>
-        <ul>id: {{result.id}}</ul>
-        <ul>name: {{result.name}}</ul>
-        <ul>status: {{result.status}}</ul>
-        <ul>gender: {{result.gender}}</ul>
-        <ul>origin: {{result.origin.name}}</ul>
-        <ul>gender: {{result.gender}}</ul>
-    </div>
+<div class="flex-container" *ngIf="searchResult">
+    <app-character-card class="flex-item" *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
+
 </div>

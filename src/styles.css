@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* grid-template-columns: auto auto auto; */
+  background-color: lightslategray;
+}
+.flex-item {
+  background-color: lightblue;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 15px;
+  text-align: center;
+}
