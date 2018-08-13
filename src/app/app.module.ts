@@ -9,6 +9,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { SearchComponent } from "./search/search.component";
 import { CurrentPagePipe } from "./pipes/current-page.pipe";
 import { HomeComponent } from "./home/home.component";
+import { CharacterCardComponent } from './character-card/character-card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from "./home/home.component";
     HomeComponent,
     SearchComponent,
     NavigationComponent,
-    CurrentPagePipe
+    CurrentPagePipe,
+    CharacterCardComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

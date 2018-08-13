@@ -6,18 +6,10 @@
   <p>Total Pages: {{searchResult.info.pages}}</p>
   <label>Jump to page: </label>
   <input name="pageSelector" placeholder="page" [(ngModel)]="selectedPage" (keyup.enter)="getCharacters(selectedPage)" type="number"
-    min="1" max="{{searchResult.info.pages}}">
+    min="1" max="{{searchResult.info.pages}}" maxlength="4">
   <button (click)="getCharacters(selectedPage)">Go</button>
 </div>
 
 <div class="flex-container" *ngIf="searchResult">
-  <div class="flex-item" *ngFor="let result of searchResult['results']">
-    <img [src]=result.image>
-    <ul>id: {{result.id}}</ul>
-    <ul>name: {{result.name}}</ul>
-    <ul>status: {{result.status}}</ul>
-    <ul>gender: {{result.gender}}</ul>
-    <ul>origin: {{result.origin.name}}</ul>
-    <ul>gender: {{result.gender}}</ul>
-  </div>
+  <app-character-card class="flex-item" *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
 </div>
