@@ -10,8 +10,6 @@
   <button (click)="getCharacters(selectedPage)">Go</button>
 </div>
 
-
-
 <div class="flex-container" *ngIf="searchResult">
   <div class="flex-item" *ngFor="let result of searchResult['results']">
     <img [src]=result.image>

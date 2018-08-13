@@ -4,15 +4,16 @@ import { FormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CharacterDetailComponent } from "./character-detail/character-detail.component";
+
 import { NavigationComponent } from "./navigation/navigation.component";
 import { SearchComponent } from "./search/search.component";
 import { CurrentPagePipe } from "./pipes/current-page.pipe";
+import { HomeComponent } from "./home/home.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    CharacterDetailComponent,
+    HomeComponent,
     SearchComponent,
     NavigationComponent,
     CurrentPagePipe
