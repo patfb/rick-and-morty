@@ -1,16 +1,21 @@
-<h1>Morty McFly</h1>
-<button (click)="getCharacters()">Home</button>
-<button (click)="nextPage()">Next Page</button>
-<button *ngIf="hasPrevious()" (click)="prevPage()">Previous Page</button>
+<div class="button-row">
+  <button mat-icon-button color="basic" (click)="getCharacters()">
+    <mat-icon aria-label="home">home</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="nextPage()">Next Page</button>
+  <button mat-raised-button color="accent" *ngIf="hasPrevious()" (click)="prevPage()">Previous Page</button>
+</div>
 <div *ngIf="searchResult">
   <p>Current Page: {{searchResult.info.next | currentPage}} </p>
   <p>Total Pages: {{searchResult.info.pages}}</p>
   <label>Jump to page: </label>
   <input name="pageSelector" placeholder="page" [(ngModel)]="selectedPage" (keyup.enter)="getCharacters(selectedPage)" type="number"
     min="1" max="{{searchResult.info.pages}}" maxlength="4">
-  <button (click)="getCharacters(selectedPage)">Go</button>
+  <button mat-icon-button (click)="getCharacters(selectedPage)">
+    <mat-icon aria-label="go">arrow_right_alt</mat-icon>
+  </button>
 </div>
 
 <div class="flex-container" *ngIf="searchResult">
-  <app-character-card class="flex-item" *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
+  <app-character-card *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
 </div>
