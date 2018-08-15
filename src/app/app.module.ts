@@ -8,7 +8,10 @@ import {
   MatIconModule,
   MatCardModule,
   MatGridListModule,
-  MatSelectModule
+  MatSelectModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatTabsModule
 } from "@angular/material";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -36,6 +39,9 @@ import { CharacterCardComponent } from "./character-card/character-card.componen
     MatCardModule,
     MatGridListModule,
     MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTabsModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule
