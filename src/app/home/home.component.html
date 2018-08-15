@@ -16,6 +16,10 @@
   </button>
 </div>
 
-<div class="flex-container" *ngIf="searchResult">
+<ng-template #loading>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
+
+<div class="flex-container" *ngIf="searchResult;else loading">
   <app-character-card *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
 </div>

@@ -11,7 +11,8 @@ import {
   MatSelectModule,
   MatInputModule,
   MatFormFieldModule,
-  MatTabsModule
+  MatTabsModule,
+  MatProgressBarModule
 } from "@angular/material";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -42,6 +43,7 @@ import { CharacterCardComponent } from "./character-card/character-card.componen
     MatInputModule,
     MatFormFieldModule,
     MatTabsModule,
+    MatProgressBarModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule
