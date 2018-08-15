@@ -6,7 +6,18 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./navigation.component.css"]
 })
 export class NavigationComponent implements OnInit {
-  constructor() {}
+  navLinks: any[] = [];
+
+  constructor() {
+    this.navLinks.push({
+      path: "/home",
+      label: "Home"
+    });
+    this.navLinks.push({
+      path: "/search",
+      label: "Search"
+    });
+  }
 
   ngOnInit() {}
 }

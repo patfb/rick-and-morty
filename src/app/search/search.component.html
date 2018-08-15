@@ -1,36 +1,33 @@
 <div>
-    <input placeholder="Name to search" [(ngModel)]="name" (keyup.enter)="search()">
-    <button (click)="search()">Search</button>
+    <mat-form-field>
+        <input matInput placeholder="Name to search" [(ngModel)]="name" (keyup.enter)="search()">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="search()">Search</button>
 </div>
-
 <div>
-    <label>Status:
-        <select [(ngModel)]="status">
-            <option value="any">Any</option>
-            <option value="alive">Alive</option>
-            <option value="dead">Dead</option>
-            <option value="unknown">Unknown</option>
-        </select>
-    </label>
-
-    <label>Gender:
-        <select [(ngModel)]="gender">
-            <option value="any">Any</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-            <option value="genderless ">Genderless</option>
-            <option value="unknown">Unknown</option>
-        </select>
-    </label>
+    <mat-form-field>
+        <mat-select [(ngModel)]="status" placeholder="Status">
+            <mat-option value="any">Any</mat-option>
+            <mat-option value="alive">Alive</mat-option>
+            <mat-option value="dead">Dead</mat-option>
+            <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [(ngModel)]="gender" placeholder="Gender">
+            <mat-option value="any">Any</mat-option>
+            <mat-option value="female">Female</mat-option>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="genderless">Genderless</mat-option>
+            <mat-option value="unkown">Unknown</mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>
 
-<p>Selected status: {{status | titlecase}}</p>
-<p>Selected gender: {{gender | titlecase}}</p>
 <div *ngIf="searchResult">
     <p>Total Pages: {{searchResult.info.pages}}</p>
     <p>Results for: {{name}}</p>
 </div>
-
 
 <div class="flex-container" *ngIf="searchResult">
     <app-character-card class="flex-item" *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
