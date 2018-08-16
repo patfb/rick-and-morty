@@ -1,11 +1,4 @@
-<div class="button-row">
-  <button mat-icon-button color="basic" (click)="getCharacters()">
-    <mat-icon aria-label="home">home</mat-icon>
-  </button>
-  <button mat-raised-button color="primary" (click)="nextPage()">Next Page</button>
-  <button mat-raised-button color="accent" *ngIf="hasPrevious()" (click)="prevPage()">Previous Page</button>
-</div>
-<div *ngIf="searchResult">
+<div *ngIf="searchResult;else loading">
   <p>Current Page: {{searchResult.info.next | currentPage}} </p>
   <p>Total Pages: {{searchResult.info.pages}}</p>
   <label>Jump to page: </label>
@@ -14,12 +7,26 @@
   <button mat-icon-button (click)="getCharacters(selectedPage)">
     <mat-icon aria-label="go">arrow_right_alt</mat-icon>
   </button>
+
+  <div class="button-row">
+    <button mat-raised-button color="accent" *ngIf="hasPrevious()" (click)="prevPage()">Previous Page</button>
+    <button mat-icon-button color="basic" (click)="getCharacters()">
+      <mat-icon aria-label="home">home</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" (click)="nextPage()">Next Page</button>
+  </div>
 </div>
+
+
+
+<mat-divider></mat-divider>
 
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
 
-<div class="flex-container" *ngIf="searchResult;else loading">
-  <app-character-card *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
+<div *ngIf="searchResult">
+  <div class="flex-container">
+    <app-character-card *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
+  </div>
 </div>
