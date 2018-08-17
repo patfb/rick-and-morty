@@ -8,12 +8,4 @@
 
 <mat-divider [inset]="false"></mat-divider>
 
-<ng-template #loading>
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</ng-template>
-
-<div *ngIf="searchResult; else loading">
-  <div class="flex-container">
-    <app-character-card *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
-  </div>
-</div>
+<app-result-area [searchResult]="searchResult"></app-result-area>

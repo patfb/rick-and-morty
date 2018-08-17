@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
   status = "any";
   gender = "any";
   searchResult: SearchResult;
+  searchConducted: boolean;
 
   constructor(
     private infoService: InfoService,
@@ -27,6 +28,7 @@ export class SearchComponent implements OnInit {
   }
 
   search(): void {
+    this.searchConducted = true;
     const paramArray: any[] = [];
 
     if (this.name) {

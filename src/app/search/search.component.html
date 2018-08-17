@@ -24,12 +24,4 @@
     </mat-form-field>
 </div>
 
-<div *ngIf="searchResult">
-    <p>Total Pages: {{searchResult.info.pages}}</p>
-    <p>Results for: {{name}}</p>
-</div>
-
-<div class="flex-container" *ngIf="searchResult">
-    <app-character-card class="flex-item" *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
-
-</div>
+<app-result-area *ngIf="searchConducted" [searchResult]="searchResult"></app-result-area>
