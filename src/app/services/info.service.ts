@@ -23,6 +23,10 @@ export class InfoService {
     return this.http.get<SearchResult>(characterUrl + params);
   }
 
+  getPage(pageNumber: number): Observable<SearchResult> {
+    return this.http.get<SearchResult>(characterUrl + `?page=${pageNumber}`);
+  }
+
   getDifferentPage(fullPageUrl: string): Observable<SearchResult> {
     return this.http.get<SearchResult>(fullPageUrl);
   }

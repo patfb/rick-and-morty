@@ -1,31 +1,18 @@
-<div *ngIf="searchResult;else loading">
-  <p>Current Page: {{searchResult.info.next | currentPage}} </p>
-  <p>Total Pages: {{searchResult.info.pages}}</p>
-  <label>Jump to page: </label>
-  <input name="pageSelector" placeholder="page" [(ngModel)]="selectedPage" (keyup.enter)="getCharacters(selectedPage)" type="number"
-    min="1" max="{{searchResult.info.pages}}" maxlength="4">
-  <button mat-icon-button (click)="getCharacters(selectedPage)">
-    <mat-icon aria-label="go">arrow_right_alt</mat-icon>
-  </button>
+<mat-slider matTooltip="Slide to select a page" matTooltipPosition="above" thumbLabel step="1" tickInterval="5" min="1" max="20"
+  [(ngModel)]="value">
+</mat-slider>
 
-  <div class="button-row">
-    <button mat-raised-button color="accent" *ngIf="hasPrevious()" (click)="prevPage()">Previous Page</button>
-    <button mat-icon-button color="basic" (click)="getCharacters()">
-      <mat-icon aria-label="home">home</mat-icon>
-    </button>
-    <button mat-raised-button color="primary" (click)="nextPage()">Next Page</button>
-  </div>
+<div class="button-row">
+  <button mat-raised-button color="primary" (click)="getPage()">Go to page {{value}}</button>
 </div>
 
-
-
-<mat-divider></mat-divider>
+<mat-divider [inset]="false"></mat-divider>
 
 <ng-template #loading>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-template>
 
-<div *ngIf="searchResult">
+<div *ngIf="searchResult; else loading">
   <div class="flex-container">
     <app-character-card *ngFor="let result of searchResult['results']" [character]="result"></app-character-card>
   </div>

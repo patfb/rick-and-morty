@@ -10,6 +10,7 @@ import { InfoService } from "../services/info.service";
 export class HomeComponent implements OnInit {
   searchResult: SearchResult;
   selectedPage: number;
+  value = 1;
 
   constructor(private infoService: InfoService) {}
 
@@ -35,6 +36,12 @@ export class HomeComponent implements OnInit {
         return this.searchResult.info.pages;
       }
     }
+  }
+
+  getPage(): void {
+    this.infoService
+      .getPage(this.value)
+      .subscribe(searchResult => (this.searchResult = searchResult));
   }
 
   getCharacters(page?: number): void {

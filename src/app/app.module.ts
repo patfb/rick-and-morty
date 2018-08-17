@@ -13,7 +13,9 @@ import {
   MatFormFieldModule,
   MatTabsModule,
   MatProgressBarModule,
-  MatDividerModule
+  MatDividerModule,
+  MatTooltipModule,
+  MatSliderModule
 } from "@angular/material";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -46,6 +48,8 @@ import { CharacterCardComponent } from "./character-card/character-card.componen
     MatTabsModule,
     MatProgressBarModule,
     MatDividerModule,
+    MatSliderModule,
+    MatTooltipModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule

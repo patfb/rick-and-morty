@@ -5,7 +5,16 @@
   margin-right: 8px;
 }
 
-.mat-divider {
-  margin-top: 5px;
-  margin-bottom: 5px;
+button {
+  margin: 5px;
+}
+
+mat-divider {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+mat-slider {
+  margin-top: 30px;
+  width: 100%;
 }
