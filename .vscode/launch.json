@@ -10,6 +10,13 @@
       "name": "search debug",
       "url": "http://localhost:4200/search",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "saved debug",
+      "url": "http://localhost:4200/saved",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }

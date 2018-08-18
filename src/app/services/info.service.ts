@@ -2,6 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SearchResult } from "../interfaces/search-results";
+import { QueryParamService } from "./queryparam.service";
+import { Character } from "../interfaces/character";
 
 const characterUrl = "https://rickandmortyapi.com/api/character";
 
@@ -9,7 +11,10 @@ const characterUrl = "https://rickandmortyapi.com/api/character";
   providedIn: "root"
 })
 export class InfoService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private queryParamService: QueryParamService
+  ) {}
 
   getCharacters(page?: number): Observable<SearchResult> {
     if (page) {
@@ -29,5 +34,13 @@ export class InfoService {
 
   getDifferentPage(fullPageUrl: string): Observable<SearchResult> {
     return this.http.get<SearchResult>(fullPageUrl);
+  }
+
+  getSavedCharacters(characterIds: number[]): Observable<Character[]> {
+    let characterIdsString: string;
+    characterIdsString = this.queryParamService.arrayToQueryString(
+      characterIds
+    );
+    return this.http.get<Character[]>(characterUrl + characterIdsString);
   }
 }

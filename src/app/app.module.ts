@@ -26,6 +26,7 @@ import { CurrentPagePipe } from "./pipes/current-page.pipe";
 import { HomeComponent } from "./home/home.component";
 import { CharacterCardComponent } from "./character-card/character-card.component";
 import { ResultAreaComponent } from "./result-area/result-area.component";
+import { SavedComponent } from './saved/saved.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ResultAreaComponent } from "./result-area/result-area.component";
     NavigationComponent,
     CurrentPagePipe,
     CharacterCardComponent,
-    ResultAreaComponent
+    ResultAreaComponent,
+    SavedComponent
   ],
   imports: [
     BrowserModule,

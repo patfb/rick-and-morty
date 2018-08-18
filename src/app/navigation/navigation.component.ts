@@ -17,6 +17,10 @@ export class NavigationComponent implements OnInit {
       path: "/search",
       label: "Search"
     });
+    this.navLinks.push({
+      path: "/saved",
+      label: "Saved"
+    });
   }
 
   ngOnInit() {}

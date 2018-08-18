@@ -1,0 +1,9 @@
+<ng-template #loading>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-template>
+
+<div *ngIf="savedCharacters; else loading">
+    <div class=" flex-container ">
+        <app-character-card *ngFor="let character of savedCharacters" [character]="character "></app-character-card>
+    </div>
+</div>
