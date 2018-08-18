@@ -4,10 +4,15 @@
   </mat-card-header>
   <img mat-card-image src={{character.image}}>
   <mat-card-content>
-    <ul>id: {{character.id}}</ul>
-    <ul>status: {{character.status}}</ul>
-    <ul>gender: {{character.gender}}</ul>
-    <ul>origin: {{character.origin.name}}</ul>
-    <ul>gender: {{character.gender}}</ul>
+    <p>id: {{character.id}}</p>
+    <p>status: {{character.status}}</p>
+    <p>gender: {{character.gender}}
+      <p>
+        <p>origin: {{character.origin.name}}</p>
+        <p>gender: {{character.gender}}</p>
   </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="saveCard(character.id)">SAVE</button>
+    <button mat-button (click)="unsaveCard(character.id)">UNSAVE</button>
+  </mat-card-actions>
 </mat-card>

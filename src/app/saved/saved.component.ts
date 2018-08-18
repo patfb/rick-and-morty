@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Character } from "../interfaces/character";
 import { InfoService } from "../services/info.service";
+import { StorageService } from "../services/storage.service";
 
 @Component({
   selector: "app-saved",
@@ -10,7 +11,10 @@ import { InfoService } from "../services/info.service";
 export class SavedComponent implements OnInit {
   savedCharacters: Character[];
 
-  constructor(private infoService: InfoService) {}
+  constructor(
+    private infoService: InfoService,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit() {
     this.retrieveSavedCharacters();
@@ -18,7 +22,7 @@ export class SavedComponent implements OnInit {
 
   retrieveSavedCharacters(): void {
     this.infoService
-      .getSavedCharacters([1, 5, 10])
+      .getSavedCharacters(this.storageService.getAll())
       .subscribe(savedCharacters => (this.savedCharacters = savedCharacters));
   }
 }

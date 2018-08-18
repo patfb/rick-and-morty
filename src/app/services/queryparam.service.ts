@@ -22,14 +22,4 @@ export class QueryParamService {
 
     return slicedQueryString;
   }
-
-  arrayToQueryString(characterIds: number[]): string {
-    let queryString: string = "/";
-
-    characterIds.forEach(id => {
-      queryString += id + ",";
-    });
-
-    return queryString.slice(0, -1);
-  }
 }

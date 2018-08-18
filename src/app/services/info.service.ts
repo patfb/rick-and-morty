@@ -37,10 +37,6 @@ export class InfoService {
   }
 
   getSavedCharacters(characterIds: number[]): Observable<Character[]> {
-    let characterIdsString: string;
-    characterIdsString = this.queryParamService.arrayToQueryString(
-      characterIds
-    );
-    return this.http.get<Character[]>(characterUrl + characterIdsString);
+    return this.http.get<Character[]>(characterUrl + "/" + characterIds);
   }
 }
