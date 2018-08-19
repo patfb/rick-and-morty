@@ -1,29 +1,11 @@
-# RickAndMorty
+# Rick and Morty Toy Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+Feature ideas
 
-## Development server
+- add search by location and populate location list with API call
+- add page slider to search results and make it responsive to number of pages in results
+- progressive web app support to save cards offline
+- database support to save cards to remote server -> change current 'save' to just be a 'pin' and then add a new 'save' to save to database
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-Test change to readme
+TODO
+- fix prettier

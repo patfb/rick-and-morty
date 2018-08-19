@@ -15,16 +15,46 @@ export class SearchComponent implements OnInit {
   gender = "any";
   searchResult: SearchResult;
   searchConducted: boolean;
+  value: number = 1;
+  totalPages: number;
 
   constructor(
     private infoService: InfoService,
     private queryParamGeneratorService: QueryParamService
-  ) {}
+  ) {
+    this.totalPages = 1;
+  }
 
   ngOnInit() {}
 
   isEqualToAny(input: string) {
     return "any" !== input.toLowerCase();
+  }
+
+  getPages(searchResult: SearchResult): number {
+    let pages: number = 1;
+    if (searchResult) {
+      if (searchResult.info) {
+        pages = searchResult.info.pages;
+      }
+    }
+    return pages;
+  }
+
+  hasNext(searchResult: SearchResult): boolean {
+    return searchResult.info.next ? true : false;
+  }
+
+  hasPrevious(searchResult: SearchResult): boolean {
+    return searchResult.info.prev ? true : false;
+  }
+
+  switchPage(pageUrl: string): void {
+    this.searchConducted = true;
+    this.infoService.getDifferentPage(pageUrl).subscribe(searchResult => {
+      this.searchResult = searchResult;
+      this.totalPages = this.getPages(searchResult);
+    });
   }
 
   search(): void {
@@ -50,8 +80,10 @@ export class SearchComponent implements OnInit {
       paramArray
     );
 
-    this.infoService
-      .search(queryString)
-      .subscribe(searchResult => (this.searchResult = searchResult));
+    this.infoService.search(queryString).subscribe(searchResult => {
+      this.searchResult = searchResult;
+      this.totalPages = this.getPages(searchResult);
+      console.log("totalPages:" + this.totalPages);
+    });
   }
 }

@@ -24,4 +24,9 @@
     </mat-form-field>
 </div>
 
+<div *ngIf="searchConducted && searchResult">
+    <button [disabled]="!hasPrevious(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.prev)">Previous</button>
+    <button [disabled]="!hasNext(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.next)">Next</button>
+    <p>Total pages: {{totalPages}}</p>
+</div>
 <app-result-area *ngIf="searchConducted" [searchResult]="searchResult"></app-result-area>

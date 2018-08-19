@@ -16,27 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getCharacters();
-  }
-
-  hasPrevious(): boolean {
-    if (this.searchResult) {
-      if (this.searchResult.info) {
-        if (this.searchResult.info.prev !== "") {
-          return true;
-        }
-      }
-    } else {
-      return false;
-    }
-  }
-
-  getPages(): number {
-    if (this.searchResult) {
-      if (this.searchResult.info) {
-        return this.searchResult.info.pages;
-      }
-    }
-  }
+  }  
 
   getPage(): void {
     this.infoService
