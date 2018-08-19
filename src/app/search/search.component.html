@@ -26,7 +26,8 @@
 
 <div *ngIf="searchConducted && searchResult">
     <button [disabled]="!hasPrevious(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.prev)">Previous</button>
-    <button [disabled]="!hasNext(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.next)">Next</button>
-    <p>Total pages: {{totalPages}}</p>
+    <button [disabled]="!hasNext(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.next)"
+        matBadge="{{totalPages - 1}}" matBadgePosition="after" matBadgeColor="accent">Next</button>
+    <p>Current page: {{currentPage}}</p>
 </div>
 <app-result-area *ngIf="searchConducted" [searchResult]="searchResult"></app-result-area>

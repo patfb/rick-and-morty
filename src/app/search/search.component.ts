@@ -3,6 +3,7 @@ import { SearchParamater } from "../interfaces/search-paramater";
 import { SearchResult } from "../interfaces/search-results";
 import { InfoService } from "../services/info.service";
 import { QueryParamService } from "../services/queryparam.service";
+import { CurrentPageParserService } from "../services/current-page-parser.service";
 
 @Component({
   selector: "app-search",
@@ -17,10 +18,12 @@ export class SearchComponent implements OnInit {
   searchConducted: boolean;
   value: number = 1;
   totalPages: number;
+  currentPage: number;
 
   constructor(
     private infoService: InfoService,
-    private queryParamGeneratorService: QueryParamService
+    private queryParamGenerator: QueryParamService,
+    private currentPageParser: CurrentPageParserService
   ) {
     this.totalPages = 1;
   }
@@ -54,6 +57,8 @@ export class SearchComponent implements OnInit {
     this.infoService.getDifferentPage(pageUrl).subscribe(searchResult => {
       this.searchResult = searchResult;
       this.totalPages = this.getPages(searchResult);
+      this.currentPage = this.getCurrentPage(searchResult);
+      console.log("current page: " + this.currentPage);
     });
   }
 
@@ -76,7 +81,7 @@ export class SearchComponent implements OnInit {
       paramArray.push(genderParam);
     }
 
-    const queryString: string = this.queryParamGeneratorService.generateSearchString(
+    const queryString: string = this.queryParamGenerator.generateSearchString(
       paramArray
     );
 
@@ -84,6 +89,23 @@ export class SearchComponent implements OnInit {
       this.searchResult = searchResult;
       this.totalPages = this.getPages(searchResult);
       console.log("totalPages:" + this.totalPages);
+      this.currentPage = this.getCurrentPage(searchResult);
+      console.log("current page: " + this.currentPage);
     });
+  }
+
+  getCurrentPage(searchResult): number {
+    let currentPage: number;
+    if (this.hasNext(searchResult)) {
+      currentPage = this.currentPageParser.parseCurrentPageFromNext(
+        searchResult.info.next
+      );
+    } else {
+      this.hasPrevious(searchResult);
+      currentPage = this.currentPageParser.parseCurrentPageFromPrevious(
+        searchResult.info.prev
+      );
+    }
+    return currentPage;
   }
 }

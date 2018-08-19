@@ -13,7 +13,8 @@ import {
   MatSelectModule,
   MatSliderModule,
   MatTabsModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatBadgeModule
 } from "@angular/material";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -53,6 +54,7 @@ import { SearchComponent } from "./search/search.component";
     MatDividerModule,
     MatSliderModule,
     MatTooltipModule,
+    MatBadgeModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule
