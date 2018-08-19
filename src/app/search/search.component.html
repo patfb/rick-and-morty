@@ -28,6 +28,6 @@
     <button [disabled]="!hasPrevious(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.prev)">Previous</button>
     <button [disabled]="!hasNext(searchResult)" mat-raised-button color="primary" (click)="switchPage(searchResult.info.next)"
         matBadge="{{totalPages - currentPage}}" [matBadgeHidden]="!hasNext(searchResult)" matBadgePosition="after" matBadgeColor="accent">Next</button>
-    <p>Current page: {{currentPage}}</p>
+    <p class="mat-body-2">Current page: {{currentPage}}</p>
 </div>
 <app-result-area *ngIf="searchConducted" [searchResult]="searchResult"></app-result-area>
