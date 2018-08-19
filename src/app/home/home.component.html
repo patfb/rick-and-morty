@@ -6,10 +6,9 @@
   <div class="button-row">
     <button mat-raised-button color="primary" (click)="getPage()">Go to page {{value}}</button>
   </div>
+
+  <mat-divider [inset]="false"></mat-divider>
+
 </div>
-
-
-
-<mat-divider [inset]="false"></mat-divider>
 
 <app-result-area [searchResult]="searchResult"></app-result-area>
