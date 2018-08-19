@@ -36,7 +36,11 @@ export class InfoService {
     return this.http.get<SearchResult>(fullPageUrl);
   }
 
-  getSavedCharacters(characterIds: number[]): Observable<Character[]> {
+  getMultipleSavedCharacters(characterIds: number[]): Observable<Character[]> {
     return this.http.get<Character[]>(characterUrl + "/" + characterIds);
+  }
+
+  getSingleSavedCharacter(characterIds: number[]): Observable<Character> {
+    return this.http.get<Character>(characterUrl + "/" + characterIds[0]);
   }
 }

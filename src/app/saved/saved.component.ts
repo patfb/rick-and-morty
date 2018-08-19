@@ -9,7 +9,9 @@ import { StorageService } from "../services/storage.service";
   styleUrls: ["./saved.component.css"]
 })
 export class SavedComponent implements OnInit {
+  isSingleCharacter: boolean;
   savedCharacters: Character[];
+  singleCharacter: Character;
 
   constructor(
     private infoService: InfoService,
@@ -21,8 +23,23 @@ export class SavedComponent implements OnInit {
   }
 
   retrieveSavedCharacters(): void {
-    this.infoService
-      .getSavedCharacters(this.storageService.getAll())
-      .subscribe(savedCharacters => (this.savedCharacters = savedCharacters));
+    const storedIds = this.storageService.getAll();
+
+    if (storedIds.length > 1) {
+      console.log("more than 1 long");
+      this.infoService
+        .getMultipleSavedCharacters(storedIds)
+        .subscribe(fechedCharacters => {
+          this.savedCharacters = fechedCharacters;
+        });
+    } else if (storedIds.length === 1) {
+      console.log("just 1 long");
+      this.infoService
+        .getSingleSavedCharacter(storedIds)
+        .subscribe(fetchedCharacter => {
+          this.savedCharacters = [];
+          this.savedCharacters.push(fetchedCharacter);
+        });
+    }
   }
 }

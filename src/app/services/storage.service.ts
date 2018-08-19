@@ -28,4 +28,9 @@ export class StorageService {
     console.log("saved characters array" + array);
     return array;
   }
+
+  isSaved(id: number): boolean {
+    console.log("storage-service isSaved: " + this.storedCharacterIds.has(id));
+    return this.storedCharacterIds.has(id);
+  }
 }

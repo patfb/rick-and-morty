@@ -11,15 +11,21 @@ export class CharacterCardComponent implements OnInit {
   @Input()
   character: Character;
 
+  isSaved: boolean;
+
   constructor(private storageService: StorageService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isSaved = this.storageService.isSaved(this.character.id);
+  }
 
   saveCard(id: number) {
     this.storageService.save(id);
+    this.isSaved = true;
   }
 
   unsaveCard(id: number) {
     this.storageService.unsave(id);
+    this.isSaved = false;
   }
 }
