@@ -12,6 +12,7 @@ export class SavedComponent implements OnInit {
   isSingleCharacter: boolean;
   savedCharacters: Character[];
   singleCharacter: Character;
+  storedIds: number[];
 
   constructor(
     private infoService: InfoService,
@@ -24,6 +25,7 @@ export class SavedComponent implements OnInit {
 
   retrieveSavedCharacters(): void {
     const storedIds = this.storageService.getAll();
+    this.storedIds = storedIds;
 
     if (storedIds.length > 1) {
       console.log("more than 1 long");

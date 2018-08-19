@@ -8,3 +8,7 @@
   justify-content: center;
   grid-template-columns: auto auto auto;
 }
+
+mat-progress-bar {
+  margin-top: 50px;
+}
