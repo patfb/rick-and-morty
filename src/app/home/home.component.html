@@ -1,10 +1,14 @@
-<mat-slider matTooltip="Slide to select a page" matTooltipPosition="above" thumbLabel step="1" tickInterval="5" min="1" max="20"
-  [(ngModel)]="value">
-</mat-slider>
+<div *ngIf="totalPages">
+  <mat-slider matTooltip="Slide to select a page" matTooltipPosition="above" thumbLabel step="1" tickInterval="5" min="1" [max]="totalPages"
+    [(ngModel)]="value">
+  </mat-slider>
 
-<div class="button-row">
-  <button mat-raised-button color="primary" (click)="getPage()">Go to page {{value}}</button>
+  <div class="button-row">
+    <button mat-raised-button color="primary" (click)="getPage()">Go to page {{value}}</button>
+  </div>
 </div>
+
+
 
 <mat-divider [inset]="false"></mat-divider>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SearchResult } from "../interfaces/search-results";
 import { InfoService } from "../services/info.service";
+import { PageParserService } from "../services/page-parser.service";
 
 @Component({
   selector: "app-home",
@@ -11,12 +12,16 @@ export class HomeComponent implements OnInit {
   searchResult: SearchResult;
   selectedPage: number;
   value = 1;
+  totalPages: number;
 
-  constructor(private infoService: InfoService) {}
+  constructor(
+    private infoService: InfoService,
+    private pageParser: PageParserService
+  ) {}
 
   ngOnInit() {
     this.getCharacters();
-  }  
+  }
 
   getPage(): void {
     this.infoService
@@ -25,9 +30,10 @@ export class HomeComponent implements OnInit {
   }
 
   getCharacters(page?: number): void {
-    this.infoService
-      .getCharacters(page)
-      .subscribe(searchResult => (this.searchResult = searchResult));
+    this.infoService.getCharacters(page).subscribe(searchResult => {
+      this.searchResult = searchResult;
+      this.totalPages = this.pageParser.getTotalPages(searchResult);
+    });
   }
 
   nextPage(): void {

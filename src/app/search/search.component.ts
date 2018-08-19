@@ -3,7 +3,7 @@ import { SearchParamater } from "../interfaces/search-paramater";
 import { SearchResult } from "../interfaces/search-results";
 import { InfoService } from "../services/info.service";
 import { QueryParamService } from "../services/queryparam.service";
-import { CurrentPageParserService } from "../services/current-page-parser.service";
+import { PageParserService } from "../services/page-parser.service";
 
 @Component({
   selector: "app-search",
@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private infoService: InfoService,
     private queryParamGenerator: QueryParamService,
-    private currentPageParser: CurrentPageParserService
+    private pageParser: PageParserService
   ) {
     this.totalPages = 1;
   }
@@ -34,30 +34,20 @@ export class SearchComponent implements OnInit {
     return "any" !== input.toLowerCase();
   }
 
-  getPages(searchResult: SearchResult): number {
-    let pages: number = 1;
-    if (searchResult) {
-      if (searchResult.info) {
-        pages = searchResult.info.pages;
-      }
-    }
-    return pages;
+  hasNext(inputSearchResult: SearchResult) {
+    return this.pageParser.hasNext(inputSearchResult);
   }
 
-  hasNext(searchResult: SearchResult): boolean {
-    return searchResult.info.next ? true : false;
-  }
-
-  hasPrevious(searchResult: SearchResult): boolean {
-    return searchResult.info.prev ? true : false;
+  hasPrevious(inputSearchResult: SearchResult) {
+    return this.pageParser.hasPrevious(inputSearchResult);
   }
 
   switchPage(pageUrl: string): void {
     this.searchConducted = true;
     this.infoService.getDifferentPage(pageUrl).subscribe(searchResult => {
       this.searchResult = searchResult;
-      this.totalPages = this.getPages(searchResult);
-      this.currentPage = this.getCurrentPage(searchResult);
+      this.totalPages = this.pageParser.getTotalPages(searchResult);
+      this.currentPage = this.pageParser.getCurrentPage(searchResult);
       console.log("current page: " + this.currentPage);
     });
   }
@@ -87,25 +77,10 @@ export class SearchComponent implements OnInit {
 
     this.infoService.search(queryString).subscribe(searchResult => {
       this.searchResult = searchResult;
-      this.totalPages = this.getPages(searchResult);
+      this.totalPages = this.pageParser.getTotalPages(searchResult);
       console.log("totalPages:" + this.totalPages);
-      this.currentPage = this.getCurrentPage(searchResult);
+      this.currentPage = this.pageParser.getCurrentPage(searchResult);
       console.log("current page: " + this.currentPage);
     });
-  }
-
-  getCurrentPage(searchResult): number {
-    let currentPage: number;
-    if (this.hasNext(searchResult)) {
-      currentPage = this.currentPageParser.parseCurrentPageFromNext(
-        searchResult.info.next
-      );
-    } else {
-      this.hasPrevious(searchResult);
-      currentPage = this.currentPageParser.parseCurrentPageFromPrevious(
-        searchResult.info.prev
-      );
-    }
-    return currentPage;
   }
 }
