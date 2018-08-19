@@ -1,15 +1,13 @@
 <mat-card [class.saved]="isSaved">
   <mat-card-header>
-    <mat-card-title>{{character.name}}</mat-card-title>
+    <mat-card-title><b>{{character.name}}</b></mat-card-title>
   </mat-card-header>
   <img mat-card-image src={{character.image}}>
   <mat-card-content>
-    <p>id: {{character.id}}</p>
-    <p>status: {{character.status}}</p>
-    <p>gender: {{character.gender}}
-      <p>
-        <p>origin: {{character.origin.name}}</p>
-        <p>gender: {{character.gender}}</p>
+    <p><i>Id:</i> {{character.id}}</p>
+    <p><i>Status:</i> {{character.status}}</p>
+    <p><i>Gender:</i> {{character.gender}}</p>
+    <p><i>Origin:</i> {{character.origin.name}}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="saveCard(character.id)">SAVE</button>

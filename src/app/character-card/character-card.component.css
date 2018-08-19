@@ -2,9 +2,20 @@ mat-card {
   max-width: 300px;
   min-width: 300px;
   margin: 10px;
+  background-image: linear-gradient(
+    to bottom left,
+    rgb(255, 255, 255),
+    rgba(128, 128, 128, 0.062)
+  );
+}
+
+button {
+  border: 1px groove rgba(0, 128, 0, 0.548);
 }
 
 .saved {
-  color: orange;
-  background-color: blue;
+  background-image: radial-gradient(
+    rgb(255, 255, 255),
+    rgba(27, 213, 219, 0.192)
+  );
 }
