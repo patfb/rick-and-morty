@@ -23,7 +23,6 @@ import { AppComponent } from "./app.component";
 import { CharacterCardComponent } from "./character-card/character-card.component";
 import { HomeComponent } from "./home/home.component";
 import { NavigationComponent } from "./navigation/navigation.component";
-import { CurrentPagePipe } from "./pipes/current-page.pipe";
 import { ResultAreaComponent } from "./result-area/result-area.component";
 import { SavedComponent } from "./saved/saved.component";
 import { SearchComponent } from "./search/search.component";
@@ -34,7 +33,6 @@ import { SearchComponent } from "./search/search.component";
     HomeComponent,
     SearchComponent,
     NavigationComponent,
-    CurrentPagePipe,
     CharacterCardComponent,
     ResultAreaComponent,
     SavedComponent
