@@ -12,12 +12,14 @@ export class SavedComponent implements OnInit {
   isSingleCharacter: boolean;
   savedCharacters: Character[];
   singleCharacter: Character;
-  storedIds: number[];
+  showSaved: boolean;
 
   constructor(
     private infoService: InfoService,
     private storageService: StorageService
-  ) {}
+  ) {
+    this.showSaved = false;
+  }
 
   ngOnInit() {
     this.retrieveSavedCharacters();
@@ -25,7 +27,7 @@ export class SavedComponent implements OnInit {
 
   retrieveSavedCharacters(): void {
     const storedIds = this.storageService.getAll();
-    this.storedIds = storedIds;
+    this.showSaved = this.hasSavedCharacters(storedIds);
 
     if (storedIds.length > 1) {
       console.log("more than 1 long");
@@ -43,5 +45,17 @@ export class SavedComponent implements OnInit {
           this.savedCharacters.push(fetchedCharacter);
         });
     }
+  }
+
+  hasSavedCharacters(input: number[]): boolean {
+    let hasSavedCharacters: boolean;
+    if (input) {
+      if (input.length > 0) {
+        hasSavedCharacters = true;
+      }
+    } else {
+      hasSavedCharacters = false;
+    }
+    return hasSavedCharacters;
   }
 }
