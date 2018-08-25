@@ -26,6 +26,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { ResultAreaComponent } from "./result-area/result-area.component";
 import { SavedComponent } from "./saved/saved.component";
 import { SearchComponent } from "./search/search.component";
+import { CompareComponent } from './compare/compare.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SearchComponent } from "./search/search.component";
     NavigationComponent,
     CharacterCardComponent,
     ResultAreaComponent,
-    SavedComponent
+    SavedComponent,
+    CompareComponent
   ],
   imports: [
     BrowserModule,

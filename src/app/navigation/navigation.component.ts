@@ -21,6 +21,10 @@ export class NavigationComponent implements OnInit {
       path: "/saved",
       label: "Saved"
     });
+    this.navLinks.push({
+      path: "/compare",
+      label: "Compare"
+    });
   }
 
   ngOnInit() {}

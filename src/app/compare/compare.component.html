@@ -1,0 +1,19 @@
+<div>
+  <input placeholder="First Text" [(ngModel)]="firstText" size="50">
+</div>
+<div>
+  <input placeholder="Second Text" [(ngModel)]="secondText" size="50">
+</div>
+<button (click)="compare()">Compare</button>
+<button (click)="resetInput()">Reset</button>
+<h2 [class.sameText]="isTextTheSame">Is the text the same? {{isTextTheSame}}</h2>
+
+<div>
+  <h3>First Text</h3>
+  <p>{{firstText}}</p>
+</div>
+
+<div>
+  <h3>Second Text</h3>
+  <p>{{secondText}}</p>
+</div>
